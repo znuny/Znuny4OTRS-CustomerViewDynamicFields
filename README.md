@@ -4,6 +4,7 @@ Znuny4OTRS - CustomerViewDynamicFields
 ======================================
 
 **Feature List**
+
 This package contains the functionality to enable dynamic fields in the ticket customer view.
 
 **Prerequisites**
