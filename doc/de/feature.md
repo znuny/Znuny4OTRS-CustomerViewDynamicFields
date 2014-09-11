@@ -1,0 +1,3 @@
+# Dynamische Felder in der Ticket Kunden-Ansicht
+
+Im OTRS Standard ist es möglich dynamische Felder in verschiedenen Ansichten, wie zum Beispiel in der Ticket Notiz-Ansicht, für die Erfassung von Feldwerten zu aktivieren. Allerdings fehlt die Möglichkeit dynamische Felder auch in der Ticket Kunden-Ansicht zu aktivieren. Dieses Paket erweitert das System um die Funktionalität dynamische Felder ebenfalls in der Ticket Kunden-Ansicht über die neue SysConfig 'Ticket::Frontend::AgentTicketCustomer###DynamicField' zu aktivieren, analog zu den anderen Ansichten.
