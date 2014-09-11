@@ -13,7 +13,7 @@
 
     <ConfigItem Name="Frontend::Output::FilterElementPre###OutputFilterPreZnuny4OTRSCustomerViewDynamicFields" Required="0" Valid="1">
         <Description Translatable="1">This configuration registers an OutputFilter module that adds the DynamicField block to the AgentTicketCustomer template.</Description>
-        <Group>Framework</Group>
+        <Group>Znuny4OTRS-CustomerViewDynamicFields</Group>
         <SubGroup>Core::Web</SubGroup>
             <Setting>
                 <Hash>
