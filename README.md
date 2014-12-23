@@ -11,7 +11,7 @@ This package contains the functionality to enable dynamic fields in the ticket c
 
 - Znuny4OTRS-Repo
 
-- OTRS 3.3
+- OTRS 4.0
 
 **Installation**
 

@@ -13,13 +13,13 @@ use strict;
 use warnings;
 
 use Kernel::System::CustomerUser;
+use Kernel::System::VariableCheck qw(:all);
 # ---
 # Znuny4OTRS-CustomerViewDynamicFields
 # ---
 use Kernel::System::DynamicField;
 use Kernel::System::DynamicField::Backend;
 # ---
-use Kernel::System::VariableCheck qw(:all);
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -112,8 +112,11 @@ sub Run {
     }
 
     # get ACL restrictions
-    $Self->{TicketObject}->TicketAcl(
-        Data          => '-',
+    my %PossibleActions = ( 1 => $Self->{Action} );
+
+    my $ACL = $Self->{TicketObject}->TicketAcl(
+        Data          => \%PossibleActions,
+        Action        => $Self->{Action},
         TicketID      => $Self->{TicketID},
         ReturnType    => 'Action',
         ReturnSubType => '-',
@@ -122,10 +125,12 @@ sub Run {
     my %AclAction = $Self->{TicketObject}->TicketAclActionData();
 
     # check if ACL restrictions exist
-    if ( IsHashRefWithData( \%AclAction ) ) {
+    if ( $ACL || IsHashRefWithData( \%AclAction ) ) {
+
+        my %AclActionLookup = reverse %AclAction;
 
         # show error screen if ACL prohibits this action
-        if ( defined $AclAction{ $Self->{Action} } && $AclAction{ $Self->{Action} } eq '0' ) {
+        if ( !$AclActionLookup{ $Self->{Action} } ) {
             return $Self->{LayoutObject}->NoPermission( WithHeader => 'yes' );
         }
     }
@@ -142,10 +147,9 @@ sub Run {
             || 0;
         my $CustomerUserOption = $Self->{ParamObject}->GetParam( Param => 'CustomerUserOption' )
             || '';
-        $Param{CustomerUserID} = $Self->{ParamObject}->GetParam( Param => 'CustomerUserID' ) || '';
-        $Param{CustomerID}     = $Self->{ParamObject}->GetParam( Param => 'CustomerID' )     || '';
-        $Param{SelectedCustomerUser}
-            = $Self->{ParamObject}->GetParam( Param => 'SelectedCustomerUser' ) || '';
+        $Param{CustomerUserID}       = $Self->{ParamObject}->GetParam( Param => 'CustomerUserID' )       || '';
+        $Param{CustomerID}           = $Self->{ParamObject}->GetParam( Param => 'CustomerID' )           || '';
+        $Param{SelectedCustomerUser} = $Self->{ParamObject}->GetParam( Param => 'SelectedCustomerUser' ) || '';
 
         # use customer login instead of email address if applicable
         if ( $Param{SelectedCustomerUser} ne '' ) {
@@ -157,8 +161,9 @@ sub Run {
 
             # search customer
             my %CustomerUserList = ();
-            %CustomerUserList
-                = $Self->{CustomerUserObject}->CustomerSearch( Search => $Param{CustomerUserID}, );
+            %CustomerUserList = $Self->{CustomerUserObject}->CustomerSearch(
+                Search => $Param{CustomerUserID},
+            );
 
             # check if just one customer user exists
             # if just one, fillup CustomerUserID and CustomerID
@@ -195,22 +200,24 @@ sub Run {
 
         # get customer user and customer id
         elsif ($ExpandCustomerName2) {
-            my %CustomerUserData
-                = $Self->{CustomerUserObject}->CustomerUserDataGet( User => $CustomerUserOption, );
-            my %CustomerUserList
-                = $Self->{CustomerUserObject}->CustomerSearch( UserLogin => $CustomerUserOption, );
+            my %CustomerUserData = $Self->{CustomerUserObject}->CustomerUserDataGet(
+                User => $CustomerUserOption,
+            );
+            my %CustomerUserList = $Self->{CustomerUserObject}->CustomerSearch(
+                UserLogin => $CustomerUserOption,
+            );
             for my $KeyCustomerUser ( sort keys %CustomerUserList ) {
                 $Param{CustomerUserID} = $KeyCustomerUser;
             }
             if ( $CustomerUserData{UserCustomerID} ) {
                 $Param{CustomerID} = $CustomerUserData{UserCustomerID};
             }
+            return $Self->Form(%Param);
 # ---
 # Znuny4OTRS-CustomerViewDynamicFields
 # ---
 # Not needed to be changed, since the 'ExpandCustomerName2' function is not used
 # ---
-            return $Self->Form(%Param);
         }
 
         my %Error;
@@ -560,7 +567,11 @@ sub Form {
 # ---
 
     $Output
-        .= $Self->{LayoutObject}->Output( TemplateFile => 'AgentTicketCustomer', Data => \%Param );
+        .= $Self->{LayoutObject}->Output(
+        TemplateFile => 'AgentTicketCustomer',
+        Data         => \%Param
+        );
+        
     $Output .= $Self->{LayoutObject}->Footer(
         Type => 'Small',
     );

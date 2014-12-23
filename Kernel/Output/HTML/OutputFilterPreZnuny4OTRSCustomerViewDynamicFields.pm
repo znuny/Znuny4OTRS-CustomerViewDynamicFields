@@ -24,24 +24,16 @@ sub new {
 sub Run {
     my ( $Self, %Param ) = @_;
 
-    # check Action param
-    return 1 if !IsStringWithData( $Self->{Action} );
-    return 1 if $Self->{Action} ne 'AgentTicketCustomer';
-
-    # check TemplateFile
-    return 1 if !IsStringWithData( $Param{TemplateFile} );
-    return 1 if $Param{TemplateFile} ne 'AgentTicketCustomer';
-
     my $DynamicFieldHTMLBlock = <<'HTML';
-<!-- dtl:block:DynamicField -->
-                            <div class="Row Row_DynamicField_$QData{"Name"}">
-                                $Data{"Label"}
+    [% RenderBlockStart("DynamicField") %]
+                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                [% Data.Label %]
                                 <div class="Field">
-                                    $Data{"Field"}
+                                   [% Data.Field %]
                                 </div>
                                 <div class="Clear"></div>
                             </div>
-<!-- dtl:block:DynamicField -->
+    [% RenderBlockEnd("DynamicField") %]
 HTML
 
     # manipulate HTML content
