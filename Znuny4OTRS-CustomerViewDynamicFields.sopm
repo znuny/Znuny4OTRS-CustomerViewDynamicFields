@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <otrs_package version="1.0">
-
     <Name>Znuny4OTRS-CustomerViewDynamicFields</Name>
-
     <Version>1.1.0</Version>
     <Framework>4.0.x</Framework>
     <Vendor>Znuny GmbH</Vendor>
     <URL>http://znuny.com/</URL>
     <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
-
     <Description Lang="en">This package contains the functionality to enable dynamic fields in the ticket customer view.</Description>
     <Description Lang="de">Dieses Paket enthält die Funktionalität um dynamische Felder in der Ticket Kunden-Ansicht zu verwenden.</Description>
-
     <PackageRequired Version="2.0.2">Znuny4OTRS-Repo</PackageRequired>
-
     <Filelist>
         <File Permission="644" Location="Custom/Kernel/Modules/AgentTicketCustomer.pm"/>
         <File Permission="644" Location="Kernel/Config/Files/Znuny4OTRSCustomerViewDynamicFields.xml"/>
