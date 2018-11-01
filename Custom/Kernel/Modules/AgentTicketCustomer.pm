@@ -1,10 +1,12 @@
 # --
-# Kernel/Modules/AgentTicketCustomer.pm - to set the ticket customer and show the customer history
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2018 OTRS AG, https://otrs.com/
+# Copyright (C) 2012-2018 Znuny GmbH, http://znuny.com/
+# --
+# $origin: otrs - 0000000000000000000000000000000000000000 - Kernel/Modules/AgentTicketCustomer.pm
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (AGPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
 
 package Kernel::Modules::AgentTicketCustomer;
@@ -13,11 +15,13 @@ use strict;
 use warnings;
 
 use Kernel::System::CustomerUser;
+
 # ---
 # Znuny4OTRS-CustomerViewDynamicFields
 # ---
 use Kernel::System::DynamicField;
 use Kernel::System::DynamicField::Backend;
+
 # ---
 use Kernel::System::VariableCheck qw(:all);
 
@@ -40,17 +44,19 @@ sub new {
 
     # customer user object
     $Self->{CustomerUserObject} = Kernel::System::CustomerUser->new(%Param);
+
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+    # Znuny4OTRS-CustomerViewDynamicFields
 # ---
-    $Self->{DynamicFieldObject}        = Kernel::System::DynamicField->new( %{ $Self } );
-    $Self->{DynamicFieldBackendObject} = Kernel::System::DynamicField::Backend->new( %{ $Self } );
+    $Self->{DynamicFieldObject}        = Kernel::System::DynamicField->new( %{$Self} );
+    $Self->{DynamicFieldBackendObject} = Kernel::System::DynamicField::Backend->new( %{$Self} );
+
 # ---
 
     $Self->{Config} = $Self->{ConfigObject}->Get("Ticket::Frontend::$Self->{Action}");
 
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+    # Znuny4OTRS-CustomerViewDynamicFields
 # ---
     # get the dynamic fields for this screen
     $Self->{DynamicField} = $Self->{DynamicFieldObject}->DynamicFieldListGet(
@@ -58,6 +64,7 @@ sub new {
         ObjectType  => ['Ticket'],
         FieldFilter => $Self->{Config}->{DynamicField} || {},
     );
+
 # ---
 
     return $Self;
@@ -142,10 +149,9 @@ sub Run {
             || 0;
         my $CustomerUserOption = $Self->{ParamObject}->GetParam( Param => 'CustomerUserOption' )
             || '';
-        $Param{CustomerUserID} = $Self->{ParamObject}->GetParam( Param => 'CustomerUserID' ) || '';
-        $Param{CustomerID}     = $Self->{ParamObject}->GetParam( Param => 'CustomerID' )     || '';
-        $Param{SelectedCustomerUser}
-            = $Self->{ParamObject}->GetParam( Param => 'SelectedCustomerUser' ) || '';
+        $Param{CustomerUserID}       = $Self->{ParamObject}->GetParam( Param => 'CustomerUserID' )       || '';
+        $Param{CustomerID}           = $Self->{ParamObject}->GetParam( Param => 'CustomerID' )           || '';
+        $Param{SelectedCustomerUser} = $Self->{ParamObject}->GetParam( Param => 'SelectedCustomerUser' ) || '';
 
         # use customer login instead of email address if applicable
         if ( $Param{SelectedCustomerUser} ne '' ) {
@@ -157,8 +163,9 @@ sub Run {
 
             # search customer
             my %CustomerUserList = ();
-            %CustomerUserList
-                = $Self->{CustomerUserObject}->CustomerSearch( Search => $Param{CustomerUserID}, );
+            %CustomerUserList = $Self->{CustomerUserObject}->CustomerSearch(
+                Search => $Param{CustomerUserID},
+            );
 
             # check if just one customer user exists
             # if just one, fillup CustomerUserID and CustomerID
@@ -185,30 +192,34 @@ sub Run {
                 $Param{CustomerID} = '';
                 $Param{"CustomerUserOptions"} = \%CustomerUserList;
             }
+
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+            # Znuny4OTRS-CustomerViewDynamicFields
 # ---
-# Not needed to be changed, since the 'ExpandCustomerName1' function is not used
+            # Not needed to be changed, since the 'ExpandCustomerName1' function is not used
 # ---
             return $Self->Form(%Param);
         }
 
         # get customer user and customer id
         elsif ($ExpandCustomerName2) {
-            my %CustomerUserData
-                = $Self->{CustomerUserObject}->CustomerUserDataGet( User => $CustomerUserOption, );
-            my %CustomerUserList
-                = $Self->{CustomerUserObject}->CustomerSearch( UserLogin => $CustomerUserOption, );
+            my %CustomerUserData = $Self->{CustomerUserObject}->CustomerUserDataGet(
+                User => $CustomerUserOption,
+            );
+            my %CustomerUserList = $Self->{CustomerUserObject}->CustomerSearch(
+                UserLogin => $CustomerUserOption,
+            );
             for my $KeyCustomerUser ( sort keys %CustomerUserList ) {
                 $Param{CustomerUserID} = $KeyCustomerUser;
             }
             if ( $CustomerUserData{UserCustomerID} ) {
                 $Param{CustomerID} = $CustomerUserData{UserCustomerID};
             }
+
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+            # Znuny4OTRS-CustomerViewDynamicFields
 # ---
-# Not needed to be changed, since the 'ExpandCustomerName2' function is not used
+            # Not needed to be changed, since the 'ExpandCustomerName2' function is not used
 # ---
             return $Self->Form(%Param);
         }
@@ -224,11 +235,11 @@ sub Run {
         }
 
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+        # Znuny4OTRS-CustomerViewDynamicFields
 # ---
-#         if (%Error) {
-#             return $Self->Form( { %Param, %Error } );
-#         }
+        #         if (%Error) {
+        #             return $Self->Form( { %Param, %Error } );
+        #         }
         # get dynamic field values form http request
         my %DynamicFieldValues;
 
@@ -238,12 +249,11 @@ sub Run {
             next DYNAMICFIELD if !IsHashRefWithData($DynamicFieldConfig);
 
             # extract the dynamic field value form the web request
-            $DynamicFieldValues{ $DynamicFieldConfig->{Name} }
-                = $Self->{DynamicFieldBackendObject}->EditFieldValueGet(
+            $DynamicFieldValues{ $DynamicFieldConfig->{Name} } = $Self->{DynamicFieldBackendObject}->EditFieldValueGet(
                 DynamicFieldConfig => $DynamicFieldConfig,
                 ParamObject        => $Self->{ParamObject},
                 LayoutObject       => $Self->{LayoutObject},
-                );
+            );
         }
 
         # convert dynamic field values into a structure for ACLs
@@ -253,8 +263,7 @@ sub Run {
             next DYNAMICFIELD if !$DynamicField;
             next DYNAMICFIELD if !$DynamicFieldValues{$DynamicField};
 
-            $DynamicFieldACLParameters{ 'DynamicField_' . $DynamicField }
-                = $DynamicFieldValues{$DynamicField};
+            $DynamicFieldACLParameters{ 'DynamicField_' . $DynamicField } = $DynamicFieldValues{$DynamicField};
         }
         $Param{DynamicField} = \%DynamicFieldACLParameters;
 
@@ -301,8 +310,7 @@ sub Run {
                         my %Filter = $Self->{TicketObject}->TicketAclData();
 
                         # convert Filer key => key back to key => value using map
-                        %{$PossibleValuesFilter}
-                            = map { $_ => $PossibleValues->{$_} }
+                        %{$PossibleValuesFilter} = map { $_ => $PossibleValues->{$_} }
                             keys %Filter;
                     }
                 }
@@ -332,14 +340,14 @@ sub Run {
             # get field html
             $DynamicFieldHTML{ $DynamicFieldConfig->{Name} } =
                 $Self->{DynamicFieldBackendObject}->EditFieldRender(
-                    DynamicFieldConfig   => $DynamicFieldConfig,
-                    PossibleValuesFilter => $PossibleValuesFilter,
-                    Mandatory =>
-                        $Self->{Config}->{DynamicField}->{ $DynamicFieldConfig->{Name} } == 2,
-                    ServerError  => $ValidationResult->{ServerError}  || '',
-                    ErrorMessage => $ValidationResult->{ErrorMessage} || '',
-                    LayoutObject => $Self->{LayoutObject},
-                    ParamObject  => $Self->{ParamObject},
+                DynamicFieldConfig   => $DynamicFieldConfig,
+                PossibleValuesFilter => $PossibleValuesFilter,
+                Mandatory =>
+                    $Self->{Config}->{DynamicField}->{ $DynamicFieldConfig->{Name} } == 2,
+                ServerError  => $ValidationResult->{ServerError}  || '',
+                ErrorMessage => $ValidationResult->{ErrorMessage} || '',
+                LayoutObject => $Self->{LayoutObject},
+                ParamObject  => $Self->{ParamObject},
                 );
         }
 
@@ -365,6 +373,7 @@ sub Run {
                 UserID             => $Self->{UserID},
             );
         }
+
 # ---
 
         # update customer user data
@@ -393,9 +402,9 @@ sub Run {
     # show form
     else {
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+        # Znuny4OTRS-CustomerViewDynamicFields
 # ---
-#         return $Self->Form(%Param);
+        #         return $Self->Form(%Param);
         my %Ticket = $Self->{TicketObject}->TicketGet(
             TicketID      => $Self->{TicketID},
             UserID        => $Self->{UserID},
@@ -445,8 +454,7 @@ sub Run {
                         my %Filter = $Self->{TicketObject}->TicketAclData();
 
                         # convert Filer key => key back to key => value using map
-                        %{$PossibleValuesFilter}
-                            = map { $_ => $PossibleValues->{$_} }
+                        %{$PossibleValuesFilter} = map { $_ => $PossibleValues->{$_} }
                             keys %Filter;
                     }
                 }
@@ -455,13 +463,13 @@ sub Run {
             # get field html
             $DynamicFieldHTML{ $DynamicFieldConfig->{Name} } =
                 $Self->{DynamicFieldBackendObject}->EditFieldRender(
-                    DynamicFieldConfig   => $DynamicFieldConfig,
-                    PossibleValuesFilter => $PossibleValuesFilter,
-                    Value                => $Ticket{ 'DynamicField_' . $DynamicFieldConfig->{Name} },
-                    Mandatory =>
-                        $Self->{Config}->{DynamicField}->{ $DynamicFieldConfig->{Name} } == 2,
-                    LayoutObject    => $Self->{LayoutObject},
-                    ParamObject     => $Self->{ParamObject},
+                DynamicFieldConfig   => $DynamicFieldConfig,
+                PossibleValuesFilter => $PossibleValuesFilter,
+                Value                => $Ticket{ 'DynamicField_' . $DynamicFieldConfig->{Name} },
+                Mandatory =>
+                    $Self->{Config}->{DynamicField}->{ $DynamicFieldConfig->{Name} } == 2,
+                LayoutObject => $Self->{LayoutObject},
+                ParamObject  => $Self->{ParamObject},
                 );
         }
 
@@ -469,6 +477,7 @@ sub Run {
             %Param,
             DynamicFieldHTML => \%DynamicFieldHTML,
         );
+
 # ---
     }
 }
@@ -521,7 +530,7 @@ sub Form {
     }
 
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+    # Znuny4OTRS-CustomerViewDynamicFields
 # ---
     # Dynamic fields
     # cycle trough the activated Dynamic Fields for this screen
@@ -557,10 +566,14 @@ sub Form {
             },
         );
     }
+
 # ---
 
     $Output
-        .= $Self->{LayoutObject}->Output( TemplateFile => 'AgentTicketCustomer', Data => \%Param );
+        .= $Self->{LayoutObject}->Output(
+        TemplateFile => 'AgentTicketCustomer',
+        Data         => \%Param
+        );
     $Output .= $Self->{LayoutObject}->Footer(
         Type => 'Small',
     );
