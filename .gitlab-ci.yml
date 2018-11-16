@@ -11,5 +11,4 @@ stages:
 job_deploy_otrs_Znuny4OTRSCustomerViewDynamicFields:
   stage: deploy
   script:
-    - git config --global push.default simple
     - sh /sync_repo.sh git@github.com:znuny/Znuny4OTRS-CustomerViewDynamicFields.git
