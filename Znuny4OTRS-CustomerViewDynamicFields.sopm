@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <otrs_package version="1.0">
     <Name>Znuny4OTRS-CustomerViewDynamicFields</Name>
-    <Version>3.3.1</Version>
+    <Version>3.3.2</Version>
+    <ChangeLog Version="3.3.2" Date="2018-11-16 09:27:42 +0100">Tidied code.</ChangeLog>
     <ChangeLog Version="3.3.1" Date="2018-11-01 23:12:57 +0100">Tidied code.</ChangeLog>
     <Framework>3.3.x</Framework>
     <PackageRequired Version="3.3.2">Znuny4OTRS-Repo</PackageRequired>
