@@ -4,7 +4,7 @@
     <Version>4.0.1</Version>
     <ChangeLog Version="4.0.1" Date="2018-11-01 23:10:11 +0100">Tidied code.</ChangeLog>
     <Framework>4.0.x</Framework>
-    <PackageRequired Version="2.0.2">Znuny4OTRS-Repo</PackageRequired>
+    <PackageRequired Version="4.0.25">Znuny4OTRS-Repo</PackageRequired>
     <Vendor>Znuny GmbH</Vendor>
     <URL>http://znuny.com/</URL>
     <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
