@@ -5,17 +5,17 @@
     <ChangeLog Version="4.0.3" Date="2021-02-12 17:42:21 +0100">Happy new year. Tidied code.</ChangeLog>
     <ChangeLog Version="4.0.2" Date="2020-04-07 17:56:43 +0200">Tidied code and improved documentation.</ChangeLog>
     <ChangeLog Version="4.0.1" Date="2018-11-01 23:10:11 +0100">Tidied code.</ChangeLog>
-    <Framework>4.0.x</Framework>
-    <PackageRequired Version="4.0.25">Znuny4OTRS-Repo</PackageRequired>
+    <Framework>6.0.x</Framework>
+    <PackageRequired Version="6.0.73">Znuny4OTRS-Repo</PackageRequired>
     <Vendor>Znuny GmbH</Vendor>
     <URL>http://znuny.com/</URL>
     <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
-    <Description Lang="en">This package contains the functionality to enable dynamic fields in the ticket customer view.</Description>
-    <Description Lang="de">Dieses Paket enthält die Funktionalität um dynamische Felder in der Ticket Kunden-Ansicht zu verwenden.</Description>
+    <Description Lang="en">Enables dynamic fields in dialog to set a ticket's customer (AgentTicketCustomer).</Description>
+    <Description Lang="de">Ermöglicht Bearbeitung von dynamischen Feldern im Dialog zum Setzen des Ticket-Kunden (AgentTicketCustomer).</Description>
     <Filelist>
-        <File Permission="644" Location="Custom/Kernel/Modules/AgentTicketCustomer.pm"/>
-        <File Permission="644" Location="Kernel/Config/Files/Znuny4OTRSCustomerViewDynamicFields.xml"/>
-        <File Permission="644" Location="Kernel/Language/de_Znuny4OTRSCustomerViewDynamicFields.pm"/>
-        <File Permission="644" Location="Kernel/Output/HTML/OutputFilterPreZnuny4OTRSCustomerViewDynamicFields.pm"/>
+        <File Permission="660" Location="Custom/Kernel/Modules/AgentTicketCustomer.pm"/>
+        <File Permission="660" Location="Custom/Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt"/>
+        <File Permission="660" Location="Kernel/Config/Files/XML/Znuny4OTRSCustomerViewDynamicFields.xml"/>
+        <File Permission="660" Location="Kernel/Language/de_Znuny4OTRSCustomerViewDynamicFields.pm"/>
     </Filelist>
 </otrs_package>

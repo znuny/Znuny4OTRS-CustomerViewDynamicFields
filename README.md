@@ -3,33 +3,33 @@
 
 ![Build status](https://badge.proxy.znuny.com/Znuny4OTRS-CustomerViewDynamicFields/master)
 
-Znuny4OTRS - CustomerViewDynamicFields
-======================================
-
-**Feature List**
-
-This package contains the functionality to enable dynamic fields in the ticket customer view.
+Znuny4OTRS-CustomerViewDynamicFields
+====================================
+This package adds the editing of dynamic fields to the dialog for setting a ticket's customer (AgentTicketCustomer).
 
 **Prerequisites**
 
-- Znuny4OTRS-Repo
-
-- OTRS 4.0
+- Znuny LTS 6 or OTRS 6
+- Znuny4OTRS-Repo 6.0.71 or newer.
 
 **Installation**
 
-Download the package and install it via admin interface -> package manager or use Znuny4OTRS-Repo.
+Download the [package](https://addons.znuny.com/api/addon_repos/public/1837/latest) and upload it via admin interface -> package manager.
 
 **Download**
 
-For download see [https://www.znuny.com/en/#!/addons](https://www.znuny.com/en/#!/addons)
+Download the [latest version](https://addons.znuny.com/api/addon_repos/public/1837/latest).
+
+**Configuration**
+
+The dynamic fields can be activated via the new SysConfig option __Ticket::Frontend::AgentTicketCustomer###DynamicField__.
 
 **Commercial Support**
 
-For this extension and for OTRS in general visit [www.znuny.com](https://www.znuny.com). Looking forward to hear from you!
+For this add-on and for more in general visit [https://www.znuny.com](https://www.znuny.com). Looking forward to hear from you!
 
 Enjoy!
 
- Your Znuny Team!
+Your Znuny Team!
 
- [www.znuny.com](https://www.znuny.com)
+[https://www.znuny.com/](https://www.znuny.com/)
