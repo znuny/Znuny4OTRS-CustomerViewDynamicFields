@@ -13,8 +13,8 @@
             </Hash>
         </Value>
     </Setting>
-    <!-- Znuny4OTRS-AdvancedDynamicFields DynamicFieldScreens registration -->
-    <Setting Name="DynamicFieldScreens###Znuny4OTRS-CustomerViewDynamicFields" Required="1" Valid="1">
+    <!-- Znuny-AdvancedDynamicFields DynamicFieldScreens registration -->
+    <Setting Name="DynamicFieldScreens###Znuny-CustomerViewDynamicFields" Required="1" Valid="1">
         <Description Translatable="1">This configuration defines all possible screens to enable or disable dynamic fields.</Description>
         <Navigation>Core</Navigation>
         <Value>

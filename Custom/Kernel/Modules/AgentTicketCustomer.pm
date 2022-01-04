@@ -1,8 +1,8 @@
 # --
-# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
-# Copyright (C) 2012-2021 Znuny GmbH, http://znuny.com/
+# Copyright (C) 2001-2022 OTRS AG, https://otrs.com/
+# Copyright (C) 2012-2022 Znuny GmbH, http://znuny.com/
 # --
-# $origin: otrs - 8207d0f681adcdeb5c1b497ac547a1d9749838d5 - Kernel/Modules/AgentTicketCustomer.pm
+# $origin: znuny - 012b2cb0daf8519ff314f751ad03b62219f63331 - Kernel/Modules/AgentTicketCustomer.pm
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -27,7 +27,7 @@ sub new {
     my $Self = {%Param};
     bless( $Self, $Type );
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+# Znuny-CustomerViewDynamicFields
 # ---
     my $ConfigObject       = $Kernel::OM->Get('Kernel::Config');
     my $DynamicFieldObject = $Kernel::OM->Get('Kernel::System::DynamicField');
@@ -47,7 +47,7 @@ sub new {
 sub Run {
     my ( $Self, %Param ) = @_;
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+# Znuny-CustomerViewDynamicFields
 # ---
     my $DynamicFieldBackendObject = $Kernel::OM->Get('Kernel::System::DynamicField::Backend');
 # ---
@@ -144,7 +144,7 @@ sub Run {
         # Expand Customer Name
         if ($ExpandCustomerName1) {
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+# Znuny-CustomerViewDynamicFields
 # ---
             # Not needed to be changed, since the 'ExpandCustomerName1' function is not being used.
 # ---
@@ -186,7 +186,7 @@ sub Run {
         # get customer user and customer id
         elsif ($ExpandCustomerName2) {
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+# Znuny-CustomerViewDynamicFields
 # ---
             # Not needed to be changed, since the 'ExpandCustomerName2' function is not being used.
 # ---
@@ -213,7 +213,7 @@ sub Run {
         }
 
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+# Znuny-CustomerViewDynamicFields
 # ---
 #         if (%Error) {
 #             return $Self->Form( %Param, %Error );
@@ -366,7 +366,7 @@ sub Run {
     # show form
     else {
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+# Znuny-CustomerViewDynamicFields
 # ---
 #         return $Self->Form(%Param);
 
@@ -499,7 +499,7 @@ sub Form {
         );
     }
 # ---
-# Znuny4OTRS-CustomerViewDynamicFields
+# Znuny-CustomerViewDynamicFields
 # ---
     DYNAMICFIELD:
     for my $DynamicFieldConfig ( @{ $Self->{DynamicFieldConfigs} } ) {
