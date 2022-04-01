@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <otrs_package version="1.0">
     <Name>Znuny-CustomerViewDynamicFields</Name>
-    <Version>6.2.1</Version>
+    <Version>6.3.1</Version>
+    <ChangeLog Version="6.3.1" Date="2022-04-01 10:41:33 +0200">Package ported to Znuny 6.3.</ChangeLog>
     <ChangeLog Version="6.2.1" Date="2022-01-04 13:56:34 +0100">Initial release for Znuny 6.2.</ChangeLog>
     <ChangeLog Version="6.1.1" Date="2022-01-04 13:46:56 +0100">Initial release for Znuny 6.1.</ChangeLog>
     <ChangeLog Version="6.0.2" Date="2021-05-21 14:08:30 +0200">Added setting to configure dynamic fields with Znuny-AdvancedDynamicFields</ChangeLog>
@@ -21,5 +22,5 @@
         <File Permission="660" Location="Kernel/Config/Files/XML/ZnunyCustomerViewDynamicFields.xml"/>
         <File Permission="660" Location="Kernel/Language/de_ZnunyCustomerViewDynamicFields.pm"/>
     </Filelist>
-    <PackageMerge Name="Znuny4OTRS-CustomerViewDynamicFields" TargetVersion="6.0.2"></PackageMerge>
+    <PackageMerge Name="Znuny4OTRS-CustomerViewDynamicFields" TargetVersion="6.0.2"/>
 </otrs_package>
