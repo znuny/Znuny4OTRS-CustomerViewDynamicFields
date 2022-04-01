@@ -1,7 +1,7 @@
 ![Znuny logo](https://www.znuny.com/assets/images/logo_small.png)
 
 
-![Build status](https://badge.proxy.znuny.com/Znuny4OTRS-CustomerViewDynamicFields/rel-6_2)
+![Build status](https://badge.proxy.znuny.com/Znuny4OTRS-CustomerViewDynamicFields/rel-6_3)
 
 Znuny-CustomerViewDynamicFields
 ===============================
@@ -9,11 +9,11 @@ This package adds the editing of dynamic fields to the dialog for setting a tick
 
 **Prerequisites**
 
-- Znuny 6.2
+- Znuny 6.3
 
 **Installation**
 
-Download the [package](https://addons.znuny.com/api/addon_repos/public/2114/latest) and install it via admin interface -> package manager.
+Download the [package](https://addons.znuny.com/api/addon_repos/public/2246/latest) and install it via admin interface -> package manager.
 
 **Configuration**
 
@@ -21,7 +21,7 @@ The dynamic fields can be activated via the new SysConfig option __Ticket::Front
 
 **Download**
 
-Download the [latest version](https://addons.znuny.com/api/addon_repos/public/2114/latest).
+Download the [latest version](https://addons.znuny.com/api/addon_repos/public/2246/latest).
 
 **Professional Support**
 
