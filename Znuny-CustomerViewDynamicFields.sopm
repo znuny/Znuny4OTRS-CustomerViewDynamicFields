@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <otrs_package version="1.0">
     <Name>Znuny-CustomerViewDynamicFields</Name>
-    <Version>6.3.1</Version>
+    <Version>6.4.1</Version>
+    <ChangeLog Version="6.4.1" Date="2022-07-27 22:18:11 +0200">initial release for Znuny 6.4</ChangeLog>
     <ChangeLog Version="6.3.1" Date="2022-04-01 10:41:33 +0200">Package ported to Znuny 6.3.</ChangeLog>
     <ChangeLog Version="6.2.1" Date="2022-01-04 13:56:34 +0100">Initial release for Znuny 6.2.</ChangeLog>
     <ChangeLog Version="6.1.1" Date="2022-01-04 13:46:56 +0100">Initial release for Znuny 6.1.</ChangeLog>
