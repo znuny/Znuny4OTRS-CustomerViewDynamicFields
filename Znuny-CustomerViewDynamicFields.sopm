@@ -2,6 +2,12 @@
 <otrs_package version="1.0">
     <Name>Znuny-CustomerViewDynamicFields</Name>
     <Version>6.4.1</Version>
+    <Framework>6.4.x</Framework>
+    <Vendor>Znuny GmbH</Vendor>
+    <URL>http://znuny.com/</URL>
+    <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
+    <Description Lang="en">Enables dynamic fields in dialog to set a ticket's customer (AgentTicketCustomer).</Description>
+    <Description Lang="de">Ermöglicht Bearbeitung von dynamischen Feldern im Dialog zum Setzen des Ticket-Kunden (AgentTicketCustomer).</Description>
     <ChangeLog Version="6.4.1" Date="2022-07-27 22:18:11 +0200">initial release for Znuny 6.4</ChangeLog>
     <ChangeLog Version="6.3.1" Date="2022-04-01 10:41:33 +0200">Package ported to Znuny 6.3.</ChangeLog>
     <ChangeLog Version="6.2.1" Date="2022-01-04 13:56:34 +0100">Initial release for Znuny 6.2.</ChangeLog>
@@ -11,12 +17,6 @@
     <ChangeLog Version="4.0.3" Date="2021-02-12 17:42:21 +0100">Happy new year. Tidied code.</ChangeLog>
     <ChangeLog Version="4.0.2" Date="2020-04-07 17:56:43 +0200">Tidied code and improved documentation.</ChangeLog>
     <ChangeLog Version="4.0.1" Date="2018-11-01 23:10:11 +0100">Tidied code.</ChangeLog>
-    <Framework>6.4.x</Framework>
-    <Vendor>Znuny GmbH</Vendor>
-    <URL>http://znuny.com/</URL>
-    <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
-    <Description Lang="en">Enables dynamic fields in dialog to set a ticket's customer (AgentTicketCustomer).</Description>
-    <Description Lang="de">Ermöglicht Bearbeitung von dynamischen Feldern im Dialog zum Setzen des Ticket-Kunden (AgentTicketCustomer).</Description>
     <Filelist>
         <File Permission="660" Location="Custom/Kernel/Modules/AgentTicketCustomer.pm"/>
         <File Permission="660" Location="Custom/Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt"/>
