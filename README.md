@@ -14,7 +14,7 @@ This package adds the editing of dynamic fields to the dialog for setting a tick
 **Installation**
 
 - Use the online repository **Znuny Open Source Add-ons** from the package manager to install the add-on.
-- From the command line use the command `bin/znuny.Console.pl Admin::Package::Install https://download.znuny.org/releases/packages/:Znuny-CustomerViewDynamicFields`.
+- From the command line use the command `bin/znuny.Console.pl Admin::Package::Install https://addons.znuny.com/public/:Znuny-CustomerViewDynamicFields`.
 
 
 **Configuration**
