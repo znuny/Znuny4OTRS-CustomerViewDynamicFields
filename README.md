@@ -13,21 +13,19 @@ This package adds the editing of dynamic fields to the dialog for setting a tick
 
 **Installation**
 
-Download the [package](https://addons.znuny.com/api/addon_repos/public/2246/latest) and install it via admin interface -> package manager.
+- Use the online repository **Znuny Open Source Add-ons** from the package manager to install the add-on.
+- From the command line use the command `bin/znuny.Console.pl Admin::Package::Install https://download.znuny.org/releases/packages/:Znuny-CustomerViewDynamicFields`.
+
 
 **Configuration**
 
 The dynamic fields can be activated via the new SysConfig option __Ticket::Frontend::AgentTicketCustomer###DynamicField__.
 
-**Download**
-
-Download the [latest version](https://addons.znuny.com/api/addon_repos/public/2246/latest).
 
 **Professional Support**
 
 For this add-on and for Znuny in general visit [www.znuny.com](https://www.znuny.com). Looking forward to hear from you!
 
-Enjoy!
 
 Your Znuny Team!
 
