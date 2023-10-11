@@ -2,7 +2,7 @@
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
 # Copyright (C) 2012 Znuny GmbH, https://znuny.com/
 # --
-# $origin: znuny - 460ef44565300c6b979b0743833e3800fdbebf81 - Kernel/Modules/AgentTicketCustomer.pm
+# $origin: Znuny - 4e84ea4bb19adae193fe08ab181211d0fc4b8a0a - Kernel/Modules/AgentTicketCustomer.pm
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -501,6 +501,12 @@ sub Form {
 # ---
 # Znuny-CustomerViewDynamicFields
 # ---
+    if ( scalar @{ $Self->{DynamicFieldConfigs} } >= 1) {
+        $LayoutObject->Block(
+            Name => 'ShowDynamicFields',
+        );
+    }
+
     DYNAMICFIELD:
     for my $DynamicFieldConfig ( @{ $Self->{DynamicFieldConfigs} } ) {
         next DYNAMICFIELD if !IsHashRefWithData($DynamicFieldConfig);
