@@ -23,4 +23,30 @@
             </Hash>
         </Value>
     </Setting>
+    <Setting Name="DynamicFields::ScreenConfiguration::ConfigKeysOfScreensByObjectType###Znuny-CustomerViewDynamicField" Required="1" Valid="1">
+        <Description Translatable="1">Config keys and their action to activate dynamic fields in different screens, grouped by object type.</Description>
+        <Navigation>Frontend::Base::DynamicFieldScreens</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Ticket">
+                    <Hash>
+                        <Item Key="Ticket::Frontend::AgentTicketCustomer###DynamicField">AgentTicketCustomer</Item>
+                    </Hash>
+                </Item>
+                <Item Key="Article">
+                    <Hash>
+                        <Item Key="Ticket::Frontend::AgentTicketCustomer###DynamicField">AgentTicketCustomer</Item>
+                    </Hash>
+                </Item>
+                <Item Key="CustomerCompany">
+                    <Hash>
+                    </Hash>
+                </Item>
+                <Item Key="CustomerUser">
+                    <Hash>
+                    </Hash>
+                </Item>
+            </Hash>
+        </Value>
+    </Setting>
 </otrs_config>

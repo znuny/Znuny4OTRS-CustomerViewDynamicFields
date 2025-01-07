@@ -2,7 +2,7 @@
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
 # Copyright (C) 2012 Znuny GmbH, https://znuny.com/
 # --
-# $origin: Znuny - 4e84ea4bb19adae193fe08ab181211d0fc4b8a0a - Kernel/Modules/AgentTicketCustomer.pm
+# $origin: Znuny - 75653c003cd2a48462e05d37374f64a9ddb42a4b - Kernel/Modules/AgentTicketCustomer.pm
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -491,7 +491,7 @@ sub Form {
 
         # show customer field as "FirstName Lastname" <MailAddress>
         if (%CustomerUserData) {
-            $TicketData{CustomerUserID} = "\"$CustomerUserData{UserFullname} " . " <$CustomerUserData{UserEmail}>";
+            $TicketData{CustomerUserID} = "\"$CustomerUserData{UserFullname}\"" . " <$CustomerUserData{UserEmail}>";
         }
         $LayoutObject->Block(
             Name => 'Customer',
