@@ -18,8 +18,6 @@ sub Data {
     # SysConfig
     $Self->{Translation}->{'Dynamic fields shown in the ticket customer screen of the agent interface.'}
         = 'Dynamische Felder, die im Dialog zum Setzen des Ticket-Kunden in der Agenten-Oberfläche angezeigt werden sollen.';
-    $Self->{Translation}->{'This configuration registers an OutputFilter module that adds the DynamicField block to the AgentTicketCustomer template.'}
-        = 'Diese Konfiguration registriert ein OutputFilter-Modul, das den Block für dynamische Felder zum Template hinzufügt.';
 
     return 1;
 }
